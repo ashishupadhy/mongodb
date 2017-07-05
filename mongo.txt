@@ -1,0 +1,2132 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\user>mongo
+MongoDB shell version v3.4.5
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.5
+Server has startup warnings:
+2017-07-05T07:44:02.448+0530 I CONTROL  [initandlisten]
+2017-07-05T07:44:02.449+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-05T07:44:02.453+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-05T07:44:02.456+0530 I CONTROL  [initandlisten]
+> db.User
+test.User
+> db.createCollection('customer')
+{ "ok" : 1 }
+
+> show collections
+customer
+
+
+
+> db.customers.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"nd Stree main",city:"mumbai},contact:{name:"sneha",relationship:"friend"}})
+2017-07-05T09:36:36.463+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:148
+> db.customers.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"nd Stree main",city:"mumbai},contact:{name:"sneha",relationship:"friend"}});
+2017-07-05T09:36:55.482+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:148
+> db.customer.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"nd Stree main",city:"mumbai},contact:{name:"sneha",relationship:"friend"}});
+2017-07-05T09:41:21.405+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:147
+> db.customer.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"nd Stree main",city:"mumbai},contact:{name:"sneha",relationship:"friend"}})
+2017-07-05T09:41:24.953+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:147
+> db.customer.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"nd Stree main",city:"mumbai},contact:{name:"sneha",relationship:"friend"}})
+2017-07-05T09:46:27.064+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:147
+> db.createCollection('customers')
+{ "ok" : 1 }
+> show collections
+customer
+customers
+
+> db.customers.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"2nd Stree main",city:"mumbai"},contact:{name:"sneha",relationship:"friend"}})
+WriteResult({ "nInserted" : 1 })
+
+> db.customers.findOne()
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+> db.customer.find().count()
+0
+> db.customers.update({first_name:"mohan"},(first_name "ashish",last_name"upadhyay"});
+2017-07-05T10:24:56.169+0530 E QUERY    [thread1] SyntaxError: missing ) in parenthetical @(shell):1:53
+> db.customers.update({first_name:"mohan"},(first_name:"ashish",last_name:"upadhyay"});
+2017-07-05T10:25:41.542+0530 E QUERY    [thread1] SyntaxError: missing ) in parenthetical @(shell):1:52
+> db.customers.update({first_name:"mohan"},(first_name:"ashish",last_name:"upadhyay"});
+2017-07-05T10:29:36.167+0530 E QUERY    [thread1] SyntaxError: missing ) in parenthetical @(shell):1:52
+> db.customers.update({first_name:"mohan"},{first_name:"ashish",last_name:"upadhyay"});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.customers.find()
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+> db.customers.findOne()
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+> db.customers.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"2nd Stree main",city:"mumbai"},contact:{name:"sneha",relationship:"friend"}})
+WriteResult({ "nInserted" : 1 })
+> db.customers.findOne()
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+> db.customers.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"2nd Stree main",city:"mumbai"},contact:{name:"sneha",relationship:"friend"}})
+WriteResult({ "nInserted" : 1 })
+> db.customers.findOne()
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+> db.customers.insert({first_name:"mohan",last_name:"Gadekar",membership:["mem1","mem2"],address:{street:"2nd Stree main",city:"mumbai"},contact:{name:"sneha",relationship:"friend"}})
+WriteResult({ "nInserted" : 1 })
+> db customers.find()
+2017-07-05T11:00:35.858+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:3
+> db.customers.find()
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+> db.customers.find().prity();
+2017-07-05T11:01:46.742+0530 E QUERY    [thread1] TypeError: db.customers.find(...).prity is not a function :
+@(shell):1:1
+> db.customers.find().prrtty();
+2017-07-05T11:01:59.877+0530 E QUERY    [thread1] TypeError: db.customers.find(...).prrtty is not a function :
+@(shell):1:1
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+> db.customers.update({first_name:"mohan"},{$set:{gender:"male"}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.customers.find()
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+> db.customers.update({first_name:"mohan"},{$unset:{age:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+> db.customers.find()
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+> db.customers.find()
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+> db.customers.update({first_name:"sujeet"},{first_name:"sujeet",last_name:"upadhyay"}),{upsert:true})
+2017-07-05T11:32:38.901+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:99
+> db.customers.update({first_name:"sujeet"},{first_name:"sujeet",last_name:"upadhyay"},{upsert:true})
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : ObjectId("595c8120630488cedfdae7fa")
+})
+> db.customers.find()
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8120630488cedfdae7fa"), "first_name" : "sujeet", "last_name" : "upadhyay" }
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+> db.customers.find({$or:[{first_name:"mohan"},{first_name:"sujeet"}]);
+...
+...
+> db.customers.find({$or :[{first_name:"sujeet"},{first_name:"mohan"}]);
+...
+...
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"},contact:{name:"sneha",relationship:"friend"},{age:18}});
+2017-07-05T11:58:34.185+0530 E QUERY    [thread1] SyntaxError: invalid property id @(shell):1:183
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"},contact:{name:"sneha",relationship:"friend"}});
+WriteResult({ "nInserted" : 1 })
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"}});
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"},contact:{name:"sneha",relationship:"friend"}});
+WriteResult({ "nInserted" : 1 })
+> db.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nadb.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nadb.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nadb.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nadb.customers.insert({first_name:"rajeev",last_name:"maurya",age:18,membership:["mem1","mem2"],address:{street:"3nd nallasopra",city:"Nallsopar"},contact:{name:"sneha",relationship:"friend"}});
+WriteResult({ "nInserted" : 1 })
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c88505ecd069ccbe4e2c3"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+> db.customers.insert({first_name:"moin",last_name:"shaikh",age:18,membership:["mem1","mem2"],address:{street:"4nd jainmandir",city:"Nallsopar(E)"}});
+WriteResult({ "nInserted" : 1 })
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c88505ecd069ccbe4e2c3"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"),
+        "first_name" : "moin",
+        "last_name" : "shaikh",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+                "city" : "Nallsopar(E)"
+        }
+}
+> db.customers.find({age:{$lt:40}});
+{ "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c88505ecd069ccbe4e2c3"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"), "first_name" : "moin", "last_name" : "shaikh", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+> db.customers.find({age:{$gt:10}});
+{ "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c88505ecd069ccbe4e2c3"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"), "first_name" : "moin", "last_name" : "shaikh", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4ndb.bank_data.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })unts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+> db.customers.insert({first_name:"james",last_name:"SMITH",age:20,account_type:"saving", membership:["mem1","mem2"],address:{street:"4nd jainmandir",city:"Nallsopar(E)"}});
+WriteResult({ "nInserted" : 1 })
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c88505ecd069ccbe4e2c3"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"),
+        "first_name" : "moin",
+        "last_name" : "shaikh",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+                "city" : "Nallsopar(E)"
+        }
+}
+{
+        "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"),
+        "first_name" : "james",
+        "last_name" : "SMITH",
+        "age" : 20,
+        "account_type" : "saving",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+                "city" : "Nallsopar(E)"
+        }
+}
+> db.bank_data.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.customers.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.customers.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}db.customers.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"};;;
+> db.createCollection('bank_data')
+{ "ok" : 1 }
+> show collections
+bank_data
+customer
+customers
+> db.bank_data.insert({First_name:"james",last_name:"SMITH","accounts.account_type":"saving",age:45})
+2017-07-05T12:45:04.822+0530 E QUERY    [thread1] Error: can't have . in field names [accounts.account_type] :
+DBCollection.prototype._validateForStorage@src/mongo/shell/collection.js:244:1
+Bulk/this.insert@src/mongo/shell/bulk_api.js:663:17
+DBCollection.prototype.insert@src/mongo/shell/collection.js:349:13
+@(shell):1:1
+> db.bank_data.insert({First_name:"james",last_name:"SMITH",account_type:"saving",age:45})
+WriteResult({ "nInserted" : 1 })
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c88505ecd069ccbe4e2c3"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"),
+        "first_name" : "moin",
+        "last_name" : "shaikh",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+                "city" : "Nallsopar(E)"
+        }
+}
+{
+        "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"),
+        "first_name" : "james",
+        "last_name" : "SMITH",
+        "age" : 20,
+        "account_type" : "saving",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+  db.customers.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })unts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+> db.bank_data.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+> db.customers.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+> db.bank_data.update({First_name:"james",last_name:"SMITH","accounts.account_type":"saving"},{$set:{"accounts.$.account_type":"current"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.customers.find().sort({last_name:1});
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"), "first_name" : "james", "last_name" : "SMITH", "age" : 20, "account_type" : "saving", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+{ "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c88505ecd069ccbe4e2c3"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"), "first_name" : "moin", "last_name" : "shaikh", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c8120630488cedfdae7fa"), "first_name" : "sujeet", "last_name" : "upadhyay" }
+> db.customers.find().count();
+10
+> db.customers.find().limit(4);
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+> db.customers.find().forEach(functiom(doc){print("Customer Name:"+doc.first_name)});
+2017-07-05T13:16:03.562+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:41
+> db.customers.find().forEach(function(doc){print("Customer Name:"+doc.first_name)});
+Customer Name:ashish
+Customer Name:mohan
+Customer Name:mohan
+Customer Name:mohan
+Customer Name:sujeet
+Customer Name:rajeev
+Customer Name:rajeev
+Customer Name:rajeev
+Customer Name:moin
+Customer Name:james
+> db.customers.find().skip(1)
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8120630488cedfdae7fa"), "first_name" : "sujeet", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c88505ecd069ccbe4e2c3"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"), "first_name" : "moin", "last_name" : "shaikh", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+{ "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"), "first_name" : "james", "last_name" : "SMITH", "age" : 20, "account_type" : "saving", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+> db.customers.find().skip(5)
+{ "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c88505ecd069ccbe4e2c3"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"), "first_name" : "rajeev", "last_name" : "maurya", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "3nd nallasopra", "city" : "Nallsopar" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"), "first_name" : "moin", "last_name" : "shaikh", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+{ "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"), "first_name" : "james", "last_name" : "SMITH", "age" : 20, "account_type" : "saving", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+> db.customers.find().skip(8)
+{ "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"), "first_name" : "moin", "last_name" : "shaikh", "age" : 18, "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+{ "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"), "first_name" : "james", "last_name" : "SMITH", "age" : 20, "account_type" : "saving", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+> db.customers.find().skip(9)
+{ "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"), "first_name" : "james", "last_name" : "SMITH", "age" : 20, "account_type" : "saving", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "4nd jainmandir", "city" : "Nallsopar(E)" } }
+> db.customers.find().skip(10)
+> db.customers.find().limit(4);
+{ "_id" : ObjectId("595c69855ecd069ccbe4e2be"), "first_name" : "ashish", "last_name" : "upadhyay" }
+{ "_id" : ObjectId("595c74455ecd069ccbe4e2bf"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" }, "gender" : "male" }
+{ "_id" : ObjectId("595c74975ecd069ccbe4e2c0"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+{ "_id" : ObjectId("595c79745ecd069ccbe4e2c1"), "first_name" : "mohan", "last_name" : "Gadekar", "membership" : [ "mem1", "mem2" ], "address" : { "street" : "2nd Stree main", "city" : "mumbai" }, "contact" : { "name" : "sneha", "relationship" : "friend" } }
+> db.customers.find().explain("execution Stats")
+2017-07-05T13:25:21.163+0530 E QUERY    [thread1] Error: explain verbosity must be one of {'queryPlanner','executionStats','allPlansExecution'} :
+parseVerbosity@src/mongo/shell/explainable.js:22:1
+constructor@src/mongo/shell/explain_query.js:83:27
+DBQuery.prototype.explain@src/mongo/shell/query.js:520:24
+@(shell):1:1
+> db.customers.find().explain("execution Stats");
+2017-07-05T13:25:24.620+0530 E QUERY    [thread1] Error: explain verbosity must be one of {'queryPlanner','executionStats','allPlansExecution'} :
+parseVerbosity@src/mongo/shell/explainable.js:22:1
+constructor@src/mongo/shell/explain_query.js:83:27
+DBQuery.prototype.explain@src/mongo/shell/query.js:520:24
+@(shell):1:1
+> db.customers.find().explain("executionStats");
+{
+        "queryPlanner" : {
+                "plannerVersion" : 1,
+                "namespace" : "test.customers",
+                "indexFilterSet" : false,
+                "parsedQuery" : {
+
+                },
+                "winningPlan" : {
+                        "stage" : "COLLSCAN",
+                        "direction" : "forward"
+                },
+                "rejectedPlans" : [ ]
+        },
+        "executionStats" : {
+                "executionSuccess" : true,
+                "nReturned" : 10,
+                "executionTimeMillis" : 0,
+                "totalKeysExamined" : 0,
+                "totalDocsExamined" : 10,
+                "executionStages" : {
+                        "stage" : "COLLSCAN",
+                        "nReturned" : 10,
+                        "executionTimeMillisEstimate" : 0,
+                        "works" : 12,
+                        "advanced" : 10,
+                        "needTime" : 1,
+                        "needYield" : 0,
+                        "saveState" : 0,
+                        "restoreState" : 0,
+                        "isEOF" : 1,
+                        "invalidates" : 0,
+                        "direction" : "forward",
+                        "docsExamined" : 10
+                }
+        },
+        "serverInfo" : {
+                "host" : "dell",
+                "port" : 27017,
+                "version" : "3.4.5",
+                "gitVersion" : "520b8f3092c48d934f0cd78ab5f40fe594f96863"
+        },
+        "ok" : 1
+}
+> db.customers.ensureIndex()
+{
+        "ok" : 0,
+        "errmsg" : "The field 'key' must be an object, but got undefined",
+        "code" : 14,
+        "codeName" : "TypeMismatch"
+}
+> db.customers.dropIndex()
+assert failed : need to specify index to dropIndex
+doassert@src/mongo/shell/assert.js:18:14
+assert@src/mongo/shell/assert.js:35:5
+DBCollection.prototype.dropIndex@src/mongo/shell/collection.js:1094:5
+@(shell):1:1
+
+2017-07-05T13:56:58.546+0530 E QUERY    [thread1] Error: assert failed : need to specify index to dropIndex :
+doassert@src/mongo/shell/assert.js:18:14
+assert@src/mongo/shell/assert.js:35:5
+DBCollection.prototype.dropIndex@src/mongo/shell/collection.js:1094:5
+@(shell):1:1
+> db.customers.getIndex()
+2017-07-05T13:57:10.205+0530 E QUERY    [thread1] TypeError: db.customers.getIndex is not a function :
+@(shell):1:1
+> db.customers.ensureIndex(age:1)
+2017-07-05T14:02:19.231+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:28
+> db.customers.ensureIndex("age":1)
+2017-07-05T14:02:33.718+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:30
+> db.customers.ensureIndex({"age":1})
+{
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+> db.customers.find().pretty();
+{
+        "_id" : ObjectId("595c69855ecd069ccbe4e2be"),
+        "first_name" : "ashish",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c74455ecd069ccbe4e2bf"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        },
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("595c74975ecd069ccbe4e2c0"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c79745ecd069ccbe4e2c1"),
+        "first_name" : "mohan",
+        "last_name" : "Gadekar",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "2nd Stree main",
+                "city" : "mumbai"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8120630488cedfdae7fa"),
+        "first_name" : "sujeet",
+        "last_name" : "upadhyay"
+}
+{
+        "_id" : ObjectId("595c87cf5ecd069ccbe4e2c2"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c88505ecd069ccbe4e2c3"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8a315ecd069ccbe4e2c4"),
+        "first_name" : "rajeev",
+        "last_name" : "maurya",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "3nd nallasopra",
+                "city" : "Nallsopar"
+        },
+        "contact" : {
+                "name" : "sneha",
+                "relationship" : "friend"
+        }
+}
+{
+        "_id" : ObjectId("595c8abf5ecd069ccbe4e2c5"),
+        "first_name" : "moin",
+        "last_name" : "shaikh",
+        "age" : 18,
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+                "city" : "Nallsopar(E)"
+        }
+}
+{
+        "_id" : ObjectId("595c8d8c5ecd069ccbe4e2c6"),
+        "first_name" : "james",
+        "last_name" : "SMITH",
+        "age" : 20,
+        "account_type" : "saving",
+        "membership" : [
+                "mem1",
+                "mem2"
+        ],
+        "address" : {
+                "street" : "4nd jainmandir",
+                "city" : "Nallsopar(E)"
+        }
+}
+> db.customers.getIndex()
+2017-07-05T14:21:24.156+0530 E QUERY    [thread1] TypeError: db.customers.getIndex is not a function :
+@(shell):1:1
+> db.customers.getIndex({age)
+...
+...
+> db.customers.getIndex({"age"1})
+2017-07-05T14:21:53.255+0530 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:28
+> db.customers.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_",
+                "ns" : "test.customers"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "age" : 1
+                },
+                "name" : "age_1",
+                "ns" : "test.customers"
+        }
+]
+> db.customers.dropIndex()
+assert failed : need to specify index to dropIndex
+doassert@src/mongo/shell/assert.js:18:14
+assert@src/mongo/shell/assert.js:35:5
+DBCollection.prototype.dropIndex@src/mongo/shell/collection.js:1094:5
+@(shell):1:1
+
+2017-07-05T14:52:22.893+0530 E QUERY    [thread1] Error: assert failed : need to specify index to dropIndex :
+doassert@src/mongo/shell/assert.js:18:14
+assert@src/mongo/shell/assert.js:35:5
+DBCollection.prototype.dropIndex@src/mongo/shell/collection.js:1094:5
+@(shell):1:1
+> db.customers.dropIndexes()
+{
+        "nIndexesWas" : 2,
+        "msg" : "non-_id indexes dropped for collection",
+        "ok" : 1
+}
+> db.customers.aggregate([{$group:{id:"first_name",MyResult:{$sum:1}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:00:43.585+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate([{$group:{id:"first_name",MyResult:{$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:02:00.295+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate([{$group:{id:"$first_name",MyResult:{$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:09:16.861+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate([{$group:{id:"$Gender",MyResult:{$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:10:33.976+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate ([{ $group : {id : "$first_name", MyResult : {$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:12:08.972+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate ([{ $group : {id : "$Gender", MyResult : {$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:12:31.558+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate ([{ $group : {id : "$membership", MyResult : {$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:13:35.773+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate ([{ $group : {id : "$595c79745ecd069ccbe4e2c1", MyResult : {$max:"$age"}}}]);
+assert: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+
+2017-07-05T16:14:22.976+0530 E QUERY    [thread1] Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field 'id' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:370:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1319:5
+@(shell):1:1
+> db.customers.aggregate ([{ $group : {_id : "$gender", Alias : {$max:"$age"}}}]);
+{ "_id" : "male", "Alias" : null }
+{ "_id" : null, "Alias" : 20 }
+> db.customers.aggregate ([{ $group : {_id : "$gender", Alias : {$min:"$age"}}}]);
+{ "_id" : "male", "Alias" : null }
+{ "_id" : null, "Alias" : 18 }
+> db.customers.aggregate ([{ $group : {_id : "$gender", Alias : {$avg:"$age"}}}]);
+{ "_id" : "male", "Alias" : null }
+{ "_id" : null, "Alias" : 18.4 }
+>
+
+
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\user>mongo
+MongoDB shell version v3.4.5
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.5
+Server has startup warnings:
+2017-07-05T07:44:02.448+0530 I CONTROL  [initandlisten]
+2017-07-05T07:44:02.449+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-05T07:44:02.453+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-05T07:44:02.456+0530 I CONTROL  [initandlisten]
+> show dbs
+admin        0.000GB
+local        0.000GB
+mycustomers  0.007GB
+test         0.000GB
+> use mycustomers
+switched to db mycustomers
+> db.customers.find().pretty();
+> db.customer.find().pretty();
+{
+        "_id" : ObjectId("595ce09b630488cedfdae896"),
+        "first_name" : "JAMES",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 8995952.153640702,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 3901436.5580737568,
+                        "currency" : "USD"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae897"),
+        "first_name" : "JOHN",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 9059210.226195503,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 5926514.06875377,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 8172876.597329946,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 4320374.732933239,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 9159979.449077135,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 8923437.883474918,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 3810781.9932702538,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 1803757.09787294,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 4947925.350834157,
+                        "currency" : "EURO"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae898"),
+        "first_name" : "ROBERT",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 3465277.443564153,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 6001520.415853325,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 1739276.2966888128,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 7704684.832334223,
+                        "currency" : "YUAN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae899"),
+        "first_name" : "MICHAEL",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 2819063.8844904397,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 4131942.2529414617,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 3782509.0311059216,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 6531886.9064971,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 2105927.920320713,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 4612959.380901612,
+                        "currency" : "YUAN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae89a"),
+        "first_name" : "WILLIAM",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 2497138.738978415,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 405606.12124239095,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 9149015.783455048,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 8797914.360492531,
+                        "currency" : "YUAN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae89b"),
+        "first_name" : "DAVID",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 8857597.106995674,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 471237.47356353,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 2834734.162895667,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 6177092.375456998,
+                        "currency" : "USD"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae89c"),
+        "first_name" : "RICHARD",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 714872.2542833243,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 4812651.936193353,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 2862753.076585194,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 7518653.660258865,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 2349544.575176711,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 8443090.325156216,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 745273.1369779429,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 8711574.840919748,
+                        "currency" : "POUNDS STERLING"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae89d"),
+        "first_name" : "CHARLES",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 7959552.738209671,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 7586797.95113736,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 3000642.5318386676,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 8510528.056592602,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 9792223.997477302,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 2541888.2929410744,
+                        "currency" : "POUNDS STERLING"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae89e"),
+        "first_name" : "JOSEPH",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 4622864.137518865,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 6580439.762613354,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 9045715.151562946,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 8273872.604220738,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 8996205.352283742,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 2691894.235052195,
+                        "currency" : "YUAN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae89f"),
+        "first_name" : "THOMAS",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 936130.4617335526,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 4173144.9420674974,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 8282074.554095908,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 7890796.5475060865,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 4747966.686441477,
+                        "currency" : "PESO"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a0"),
+        "first_name" : "CHRISTOPHER",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 1870338.5807330757,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 5098043.412530517,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 3042158.5783834355,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 2721431.0181220435,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 2135388.570106006,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 2416831.8654360515,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 405349.36727577704,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 6140519.315997784,
+                        "currency" : "YEN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a1"),
+        "first_name" : "DANIEL",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 8382349.386766551,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 6605864.850059703,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 3849188.922156063,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 4040933.2733676303,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 6169503.517499695,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 7641660.104955465,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 6103871.976585753,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 5707269.0824853135,
+                        "currency" : "YEN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a2"),
+        "first_name" : "PAUL",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 936484.1221326711,
+                        "currency" : "YUAN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a3"),
+        "first_name" : "MARK",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 521640.39247602574,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 9896058.025694223,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 6326316.032295041,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 752161.7102783576,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 496816.2525023853,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 7791969.069134079,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 8401384.260885552,
+                        "currency" : "POUNDS STERLING"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a4"),
+        "first_name" : "DONALD",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 9075817.291616874,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 3447555.7155175945,
+                        "currency" : "POUNDS STERLING"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a5"),
+        "first_name" : "GEORGE",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 7510049.716676093,
+                        "currency" : "PESO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 8978088.436168617,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 3536582.866462197,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 4390095.46173461,
+                        "currency" : "USD"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a6"),
+        "first_name" : "KENNETH",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 8984765.638846941,
+                        "currency" : "YEN"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a7"),
+        "first_name" : "STEVEN",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 7606194.17605087,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 2099711.775821766,
+                        "currency" : "EURO"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 2961011.973269031,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 5830306.873168334,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 1542091.8696738125,
+                        "currency" : "EURO"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a8"),
+        "first_name" : "EDWARD",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 6577381.434625924,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 8998935.759297138,
+                        "currency" : "USD"
+                },
+                {
+                        "account_type" : "Investment",
+                        "account_balance" : 588000.4045217587,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "Savings",
+                        "account_balance" : 6743563.754405159,
+                        "currency" : "YUAN"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 8580650.627761671,
+                        "currency" : "POUNDS STERLING"
+                },
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 7687815.685781645,
+                        "currency" : "YEN"
+                },
+                {
+                        "account_type" : "Checking",
+                        "account_balance" : 9128407.633252997,
+                        "currency" : "EURO"
+                }
+        ]
+}
+{
+        "_id" : ObjectId("595ce09b630488cedfdae8a9"),
+        "first_name" : "BRIAN",
+        "last_name" : "SMITH",
+        "accounts" : [
+                {
+                        "account_type" : "401K",
+                        "account_balance" : 149839.10500178766,
+                        "currency" : "PESO"
+                }
+        ]
+}
+Type "it" for more
+>
+
